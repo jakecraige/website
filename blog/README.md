@@ -20,13 +20,13 @@ It must be an `<h1>` tag:
 # Example Article
 ```
 
-Preview at <http://localhost:2000> with:
+Preview at <http://localhost:8000> with:
 
 ```
-./genblog serve
+make serve
 ```
 
-See the JSON feed at <http://localhost:2000/feed.json>.
+See the JSON feed at <http://localhost:8000/feed.json>.
 
 Add images to the `public/images` directory.
 Refer to them in articles via relative path:
@@ -116,7 +116,7 @@ Configure [Netlify](https://www.netlify.com):
 
 * Repository: `https://github.com/example/example`
 * Branch: `master`
-* Build Cmd: `./genblog build`
+* Build Cmd: `make build`
 * Public folder: `public`
 
 To publish articles, commit to the GitHub repo:

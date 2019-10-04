@@ -1,4 +1,20 @@
 {
-  "name": "Blog",
-  "url": "https://blog.example.com"
+  "articles": [
+    {
+      "author_ids": [
+        "jakecraige"
+      ],
+      "id": "attacking-vss-without-broadcast",
+      "published": "2019-10-04"
+    }
+  ],
+  "authors": [
+    {
+      "id": "jakecraige",
+      "name": "Jake Craige",
+      "url": "https://jakecraige.com"
+    }
+  ],
+  "name": "Jake",
+  "url": "https://jakecraige.com/blog"
 }
