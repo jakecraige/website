@@ -61,6 +61,40 @@ specific to a participant, all but that participant would reject the proof as in
 While this attack only works against flawed implementations, this seems to be an interesting result
 which may be useful in other circumstances.
 
+## A variant of the attack
+
+You may notice that the cancellation is likely detectable during verification by checking that all
+unique combinations of the commitments sum to zero. This may work for the specific attack outlined
+above, but there are likely other forms of similar attacks that would bypass explicit checks.
+
+Here is another variant that requires knowledge of $a_0$, but still allows you to mutate the proof
+in a way that continues to verify for a different public key. This could be used to force nonce
+reuse in a threshold signature scheme which uses deterministic signatures by providing the same
+shares to sign the same message again, but change the nonce pubkey the proof commits to.
+
+The adversary constructs the proofs as follows:
+
+1. A sharing polynomial with random coefficients is created where we exclude the second coefficient
+   $p(x) = \sum_{i=0,i \neq 1}^{t-1} a_i x^i$.
+1. Shares are created: $\\{s_i = p(i) | i \in [n]\\}$
+1. Commitments are created: $\\{y_i | g^a_i \in [2, t-1]\\}$
+1. Choose a random value $r \in Z_q$ and set $y_0 = g^{r}$.
+1. For each participant $j \in [n]$ a separate $y_1$ is created for each proof:
+  1. $y_{1,j} = (g^{a_0 - r})^{j^{-1}}$
+  1. $\\{y\_0, y\_{1,j}, y\_2, ..., y\_{t-1}\\}$
+
+Verification for each participant $j$ is defined as
+$g^{s\_j} = \prod\_{i=0}^{t-1} {y\_i^j}^i$. We show that the proof holds below:
+
+$$
+\begin{align\*}
+g^{s\_j} &= g^{a\_0 j^0} \cdot g^{a\_1 j^1} \cdot \prod\_{i=2}^{t-1} g^{a\_i j^i} \\\\
+\&= g^{r j^0 + ((a\_0 - r) \cdot j^{-1}) {j^1}  + \sum\_{i=2}^{t-1} a\_i j^i} \\\\
+\&= g^{r + a_0 - r + \sum\_{i=2}^{t-1} a\_i j^i} \\\\
+\&= g^{\sum\_{i=0,i \neq 1}^{t-1} a\_i j^i} \\\\
+\end{align\*}
+$$
+
 [Pedersen VSS]: https://link.springer.com/content/pdf/10.1007/3-540-46416-6_47.pdf
 [Feldman VSS]: https://www.cs.umd.edu/~gasarch/TOPICS/secretsharing/feldmanVSS.pdf
 [Verifiable Secret Sharing (VSS)]: https://en.wikipedia.org/wiki/Verifiable_secret_sharing
