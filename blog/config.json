@@ -1,21 +1,14 @@
 {
   "articles": [
     {
-      "author_ids": [
-        "jakecraige"
-      ],
+      "author": "Jake Craige",
       "id": "vss-forgery",
       "published": "2019-10-04",
       "updated": "2019-10-08"
     }
   ],
-  "authors": [
-    {
-      "id": "jakecraige",
-      "name": "Jake Craige",
-      "url": "https://jakecraige.com"
-    }
-  ],
-  "name": "Jake",
-  "url": "https://jakecraige.com/blog"
+  "blog": {
+    "name": "Jake's Blog",
+    "url": "https://jcraige.com"
+  }
 }

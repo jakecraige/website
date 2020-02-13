@@ -98,9 +98,3 @@ $$
 [Pedersen VSS]: https://link.springer.com/content/pdf/10.1007/3-540-46416-6_47.pdf
 [Feldman VSS]: https://www.cs.umd.edu/~gasarch/TOPICS/secretsharing/feldmanVSS.pdf
 [Verifiable Secret Sharing (VSS)]: https://en.wikipedia.org/wiki/Verifiable_secret_sharing
-
-<script>
-  MathJax = {tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, svg: { fontCache: 'global' }};
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

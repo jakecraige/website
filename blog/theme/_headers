@@ -1,0 +1,5 @@
+/*
+  Content-Security-Policy: default-src 'self' polyfill.io cdn.jsdelivr; script-src https: 'unsafe-inline' style-src https: 'unsafe-inline'; img-src 'self' data:; frame-ancestors 'none';
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
