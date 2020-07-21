@@ -128,7 +128,7 @@ In ed25519 we use [edwards25519] which has a prime `r` and cofactor of 8. This
 means that set of divisors of `n` is the union of the divisors of `r` and 8.
 Since `r` is prime it's divisors are simply `{1, r}`, the divisors of 8 are
 `{1, 2, 4, 8}`. Putting all this together, every subgroup of edwards25519 must
-have one of the following orders `[1, 2, 4, 8, r}`.
+have one of the following orders `{1, 2, 4, 8, r}`.
 
 Back to the bits, what does clearing the lowest three do to the integer? It
 turns it into multiple of 8, the cofactor. Here's why this is useful. In
