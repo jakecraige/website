@@ -151,7 +151,7 @@ same identity element. If the provided point is in the prime order `r`
 subgroup, then we get some other point in the subgroup and _not_ the identity
 element.
 
-Because the identity element is in every subgroup, by definition a group, we
+Because the identity element is in every subgroup, by definition also a group, we
 can say that doing a scalar multiplication of this secret with an arbitrary
 point from the group will result in an element in the prime order subgroup. In
 practice, we may not actually want to allow the identity element and could
@@ -176,7 +176,7 @@ critical for the security of the signatures themself.
 
 ### Setting the highest bit
 
-The next part of the clamping to cover is the reasoning for clearing the 256th
+Next we discuss clearing the 256th
 bit and setting the 255th to 1. The purpose of this is to ensure that the
 highest bit is always at a fixed position. Daniel J. Bernstein (djb), the
 creator of ed25519, provided an explanation for this in a [mailing list post
@@ -205,7 +205,7 @@ point, and we always multiply by the known generator. From [BL17][ladder]:
 > computing n, P→nP on typical curves.
 
 An implementation _could_ use the Montgomery ladder with y-coordinate recovery
-but standard implementations will not. So like with clearing the bits, we see
+but standard implementations will not. As with clearing the bits, we see
 yet another choice made to protect against bad implementations or using the
 same keys with X25519.
 
