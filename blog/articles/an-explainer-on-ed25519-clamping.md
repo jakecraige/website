@@ -88,9 +88,9 @@ start thinking in big-endian this will be very confusing.
 [little-endian]: https://en.wikipedia.org/wiki/Endianness
 
 ```
-input[0] &= 248  // 248 == 0b00011111
-input[31] &= 127 // 127 == 0b11111110
-input[31] |= 64  // 64  == 0b00000010
+input[0] &= 248  // 248 == 0b11111000
+input[31] &= 127 // 127 == 0b01111111
+input[31] |= 64  // 64  == 0b01000000
 ```
 
 In the first line, we are "clearing" or "zeroing" the lowest three bits of the
@@ -151,7 +151,7 @@ same identity element. If the provided point is in the prime order `r`
 subgroup, then we get some other point in the subgroup and _not_ the identity
 element.
 
-Because the identity element is in every subgroup, by definition a group, we
+Because the identity element is in every subgroup (by definition of a group), we
 can say that doing a scalar multiplication of this secret with an arbitrary
 point from the group will result in an element in the prime order subgroup. In
 practice, we may not actually want to allow the identity element and could
@@ -176,11 +176,11 @@ critical for the security of the signatures themself.
 
 ### Setting the highest bit
 
-The next part of the clamping to cover is the reasoning for clearing the 256th
-bit and setting the 255th to 1. The purpose of this is to ensure that the
-highest bit is always at a fixed position. Daniel J. Bernstein (djb), the
-creator of ed25519, provided an explanation for this in a [mailing list post
-from 2014], of which I'll expand on here.
+Now we turn to the next part of clamping: clearing the 256th bit and setting the
+255th to 1. The purpose of this is to ensure that the highest bit is always at
+a fixed position. The first [explanation was seen on StackOverflow in
+2013][high-bit] and later Daniel J. Bernstein (djb), the creator of ed25519,
+explained in [a mailing list post from 2014]. I'll expand on these here.
 
 X25519 only deals in x-coordinates and there is a simple & efficient way to
 implement scalar multiplication of x-coordinates known as the [Montgomery
@@ -205,14 +205,15 @@ point, and we always multiply by the known generator. From [BL17][ladder]:
 > computing n, P→nP on typical curves.
 
 An implementation _could_ use the Montgomery ladder with y-coordinate recovery
-but standard implementations will not. So like with clearing the bits, we see
-yet another choice made to protect against bad implementations or using the
-same keys with X25519.
+but standard implementations will not. As with clearing the bits, we see yet
+another choice made to protect against bad implementations or using the same
+keys with X25519.
 
 If you want to get into the weeds learning about the Montgomery ladder
 [BL17][ladder] and [CS17][Costello] are good resources.
 
-[mailing list post from 2014]: https://mailarchive.ietf.org/arch/msg/cfrg/pt2bt3fGQbNF8qdEcorp-rJSJrc/
+[high-bit]: https://crypto.stackexchange.com/a/11818
+[a mailing list post from 2014]: https://mailarchive.ietf.org/arch/msg/cfrg/pt2bt3fGQbNF8qdEcorp-rJSJrc/
 [ladder]: https://eprint.iacr.org/2017/293.pdf
 [Costello]: https://eprint.iacr.org/2017/212.pdf
 
@@ -225,5 +226,5 @@ and rationale definitely fits the bill but it has been hard to find a detailed
 explanation on the reasoning for this and how necessary they are (or are not).
 Hopefully this post helps with that :)
 
-If you see any errors or want to discuss or provide feedback on this post, 
+If you see any errors or want to discuss or provide feedback on this post,
 please reach out to me on twitter [@jakecraige](https://twitter.com/jakecraige).
