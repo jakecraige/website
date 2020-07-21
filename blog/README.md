@@ -7,7 +7,7 @@ A static blog.
 Generate an article:
 
 ```
-./genblog article example-article
+./genblog add example-article
 ```
 
 Edit `articles/example-article.md` in a text editor.
