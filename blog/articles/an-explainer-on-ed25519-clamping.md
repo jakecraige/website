@@ -226,5 +226,7 @@ and rationale definitely fits the bill but it has been hard to find a detailed
 explanation on the reasoning for this and how necessary they are (or are not).
 Hopefully this post helps with that :)
 
-If you see any errors or want to discuss or provide feedback on this post,
-please reach out to me on twitter [@jakecraige](https://twitter.com/jakecraige).
+If you find any errors in this post or have any questions, you can [comment on Reddit][reddit] or
+reach out to me on Twitter ([@jakecraige](https://twitter.com/jakecraige)).
+
+[reddit]: https://www.reddit.com/r/crypto/comments/hvdzzy/an_explainer_on_ed25519_clamping/
