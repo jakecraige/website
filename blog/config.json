@@ -6,6 +6,11 @@
   "articles": [
     {
       "author": "Jake Craige",
+      "id": "dangers-of-determinism-in-threshold-signatures",
+      "published": "2020-07-31"
+    },
+    {
+      "author": "Jake Craige",
       "id": "an-explainer-on-ed25519-clamping",
       "published": "2020-07-21"
     },
